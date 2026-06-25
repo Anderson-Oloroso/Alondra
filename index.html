@@ -146,17 +146,15 @@ document.getElementById('msgClose').addEventListener('click',()=>{if(lineTimer)c
 overlay.addEventListener('click',e=>{if(e.target===overlay){if(lineTimer)clearTimeout(lineTimer);overlay.style.display='none';}});
 
 document.addEventListener('DOMContentLoaded', () => {
-  const centerCard = document.getElementById('centerCard'); 
+  const centerCard = document.getElementById('centerCard');
   centerCard.addEventListener('click', () => {
-    const iframe = document.createElement('iframe');
-    iframe.src = "https://www.youtube.com/embed/Rhfy2EULgsU?si=pPmQA9WpgI3HPLX_&autoplay=1&loop=1&playlist=Rhfy2EULgsU";
-    iframe.width = "0";
-    iframe.height = "0";
-    iframe.frameBorder = "0";
-    iframe.allow = "autoplay";
-    iframe.style.display = "none"; 
-    document.body.appendChild(iframe);
-  }, { once: true }); 
+    const video = document.createElement('video');
+    video.src = "Seremos.mp4"; 
+    video.autoplay = true;
+    video.loop = true;
+    video.style.display = "none";
+    document.body.appendChild(video);
+  }, { once: true });
 });
 </script>
 </body>
