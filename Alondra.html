@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Alondra 💖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#0a000d}
+.page{position:relative;width:100%;height:100dvh;display:flex;align-items:center;justify-content:center;overflow:hidden;user-select:none}
+.bg-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,#1a0025 0%,#2a003a 30%,#110018 65%,#080010 100%);z-index:0}
+.bg-gradient::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 60% 55%,rgba(160,0,200,.2) 0%,transparent 55%),radial-gradient(ellipse at 30% 35%,rgba(220,0,120,.12) 0%,transparent 45%);animation:shimmer 6s ease-in-out infinite alternate}
+@keyframes shimmer{from{opacity:.5}to{opacity:1}}
+.words-bg{position:absolute;inset:0;z-index:1;pointer-events:none}
+.bg-word{position:absolute;font-family:'Dancing Script',cursive;font-weight:700;opacity:0;animation:word-fade 5s ease-in-out infinite;text-shadow:0 0 16px currentColor;letter-spacing:1px;white-space:nowrap}
+@keyframes word-fade{0%{opacity:0;transform:translateY(4px) scale(.97)}15%{opacity:.22;transform:translateY(0) scale(1)}80%{opacity:.18;transform:translateY(-3px) scale(1)}100%{opacity:0;transform:translateY(-6px) scale(.97)}}
+.petals-container{position:absolute;inset:0;pointer-events:none;z-index:2}
+.floating-petal{position:absolute;top:-10%;animation:fallDown linear infinite;filter:drop-shadow(0 0 6px rgba(200,0,150,.5))}
+@keyframes fallDown{0%{transform:translateY(-60px) rotate(0deg);opacity:0}8%{opacity:.9}90%{opacity:.8}100%{transform:translateY(110vh) rotate(540deg);opacity:0}}
+.center-card{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:32px 40px 28px;border-radius:28px;background:rgba(30,0,45,.55);border:1px solid rgba(200,50,255,.25);box-shadow:0 0 40px rgba(180,0,220,.3),0 0 80px rgba(180,0,220,.12),inset 0 0 30px rgba(180,0,220,.08);backdrop-filter:blur(12px);min-width:280px;max-width:88vw;cursor:pointer}
+.typewriter-label{font-family:'Dancing Script',cursive;font-size:1rem;color:rgba(220,150,255,.75);letter-spacing:1.5px;text-shadow:0 0 10px rgba(200,100,255,.4)}
+.typewriter-name{font-family:'Pacifico',cursive;font-size:3rem;color:#fff;text-shadow:0 2px 0 #6a0080,0 4px 0 #4a005a,0 6px 20px rgba(200,0,255,.6),0 0 50px rgba(220,80,255,.4);letter-spacing:2px;min-height:3.8rem;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.cursor{display:inline-block;margin-left:2px;color:#e040fb;animation:blink .75s step-end infinite;text-shadow:0 0 12px #e040fb}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.name-heart{font-size:1.7rem;animation:heart-beat 1.4s ease-in-out infinite;filter:drop-shadow(0 0 10px rgba(220,0,150,.9))}
+@keyframes heart-beat{0%,100%{transform:scale(1)}14%{transform:scale(1.35)}28%{transform:scale(1)}42%{transform:scale(1.25)}56%{transform:scale(1)}}
+.tap-hint{font-family:'Dancing Script',cursive;font-size:.82rem;color:rgba(200,150,255,.55);margin-top:6px;letter-spacing:.8px;animation:fade-hint 2.5s ease-in-out infinite}
+.music-btn{position:absolute;bottom:28px;z-index:10;font-family:'Dancing Script',cursive;font-size:1.05rem;color:rgba(220,150,255,.85);background:rgba(30,0,50,.6);border:1px solid rgba(200,50,255,.3);border-radius:50px;padding:10px 24px;cursor:pointer;backdrop-filter:blur(8px);letter-spacing:1px;transition:all .3s;animation:fade-hint 3s ease-in-out infinite}
+.music-btn.on{color:#e040fb;border-color:rgba(220,50,255,.6);box-shadow:0 0 24px rgba(200,0,255,.45);animation:none}
+@keyframes fade-hint{0%,100%{opacity:.65}50%{opacity:1}}
+.msg-overlay{position:fixed;inset:0;z-index:100;background:rgba(5,0,15,.82);display:flex;align-items:center;justify-content:center;animation:overlay-in .35s ease;backdrop-filter:blur(6px);padding:24px}
+@keyframes overlay-in{from{opacity:0}to{opacity:1}}
+.msg-card{background:rgba(25,0,40,.92);border:1px solid rgba(200,50,255,.35);border-radius:24px;padding:28px 24px 22px;max-width:340px;width:100%;max-height:85dvh;overflow-y:auto;box-shadow:0 0 50px rgba(180,0,220,.35),inset 0 0 30px rgba(180,0,220,.08);animation:card-in .4s cubic-bezier(.34,1.56,.64,1);display:flex;flex-direction:column;gap:14px}
+@keyframes card-in{from{opacity:0;transform:scale(.85) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.msg-header{font-family:'Pacifico',cursive;font-size:1.4rem;color:#fff;text-align:center;text-shadow:0 0 20px rgba(220,80,255,.6)}
+.msg-body{display:flex;flex-direction:column;gap:2px}
+.msg-line{font-family:'Dancing Script',cursive;font-size:1.15rem;color:rgba(235,195,255,.92);line-height:1.6;text-shadow:0 0 8px rgba(180,0,220,.3);animation:line-in .5s ease both}
+@keyframes line-in{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+.msg-footer{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.msg-close,.btn-edit,.btn-save,.btn-cancel{font-family:'Dancing Script',cursive;border-radius:50px;cursor:pointer;transition:all .25s;padding:8px 20px}
+.msg-close{font-size:1rem;color:rgba(200,150,255,.75);background:transparent;border:1px solid rgba(200,50,255,.25)}
+.msg-close:active{transform:scale(.95);color:#e040fb}
+.btn-edit{font-size:1rem;color:rgba(180,255,220,.85);background:transparent;border:1px solid rgba(50,255,150,.3)}
+.btn-edit:active{transform:scale(.95);color:#80ffb0}
+.edit-area-wrap{display:flex;flex-direction:column;gap:10px}
+.edit-textarea{width:100%;min-height:180px;background:rgba(15,0,30,.8);border:1px solid rgba(200,50,255,.4);border-radius:14px;padding:14px;color:rgba(235,195,255,.92);font-family:'Dancing Script',cursive;font-size:1.05rem;line-height:1.7;resize:none;outline:none}
+.edit-textarea:focus{border-color:rgba(200,50,255,.7)}
+.edit-hint{font-family:'Dancing Script',cursive;font-size:.78rem;color:rgba(180,120,255,.5);text-align:center}
+.edit-actions{display:flex;gap:10px;justify-content:center}
+.btn-save{font-size:1.05rem;color:#fff;background:rgba(140,0,200,.6);border:1px solid rgba(200,50,255,.5);padding:10px 26px;box-shadow:0 0 16px rgba(180,0,220,.3)}
+.btn-save:active{transform:scale(.95)}
+.btn-cancel{font-size:1rem;color:rgba(200,150,255,.7);background:transparent;border:1px solid rgba(200,50,255,.2);padding:10px 20px}
+.saved-toast{text-align:center;font-family:'Dancing Script',cursive;font-size:.9rem;color:#80ffb0;animation:toast-in .3s ease}
+@keyframes toast-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.hidden-yt{position:absolute;width:0;height:0;border:none;opacity:0;pointer-events:none}
+@media(max-width:380px){.typewriter-name{font-size:2.4rem;min-height:3.2rem}.center-card{padding:26px 28px 22px}}
+@media(min-width:500px){.typewriter-name{font-size:3.5rem;min-height:4.4rem}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="bg-gradient"></div>
+  <div class="words-bg" id="wordsEl"></div>
+  <div class="petals-container" id="petalsEl"></div>
+  <div class="center-card" id="centerCard">
+    <div class="typewriter-label">✨ con todo el amor ✨</div>
+    <div class="typewriter-name"><span id="textEl"></span><span class="cursor" id="cursorEl">|</span></div>
+    <div class="name-heart">💖</div>
+    <div class="tap-hint">Toca para leer tu mensaje 💌</div>
+  </div>
+  <div class="msg-overlay" id="msgOverlay" style="display:none">
+    <div class="msg-card" id="msgCard">
+      <div class="msg-header">💌 Para Alondra</div>
+      <div class="msg-body" id="msgBody"></div>
+      <div class="msg-footer" style="margin-top:10px">
+        <button class="msg-close" id="msgClose">Cerrar ✕</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+let msgText=`Mi princesa...
+eres la persona más especial
+que existe en mi mundo. 🌙
+
+Cada vez que sonríes,
+el universo entero se detiene
+a admirarte. ✨
+
+Eres mi alegría, mi calma,
+mi lugar favorito.
+
+Te quiero más de lo que
+cualquier palabra puede decir. 💖`;
+
+// ── Words ─────────────────────────────────────────────────────────
+const words=[
+  {t:"Amor",s:"2.8rem",x:8,y:12,c:"#e040fb",d:0},{t:"Felicidad",s:"1.1rem",x:72,y:8,c:"#ff80ab",d:.5},
+  {t:"Ternura",s:"1.9rem",x:55,y:18,c:"#b388ff",d:1},{t:"Alegría",s:"1.3rem",x:5,y:35,c:"#ff4081",d:1.5},
+  {t:"Pasión",s:"2.2rem",x:78,y:30,c:"#d500f9",d:.8},{t:"Cariño",s:"1.0rem",x:18,y:55,c:"#ce93d8",d:2},
+  {t:"Dulzura",s:"2.5rem",x:62,y:52,c:"#cc66ff",d:.3},{t:"Encanto",s:"1.2rem",x:38,y:5,c:"#f48fb1",d:1.8},
+  {t:"Luz",s:"3.0rem",x:85,y:60,c:"#bf5fff",d:.6},{t:"Vida",s:"1.5rem",x:3,y:72,c:"#ff6b9d",d:2.2},
+  {t:"Sueños",s:"1.8rem",x:50,y:72,c:"#ea80fc",d:.9},{t:"Magia",s:"2.4rem",x:22,y:82,c:"#e91e8c",d:1.3},
+  {t:"Corazón",s:"1.1rem",x:75,y:80,c:"#ff80ff",d:1.7},{t:"Bella",s:"2.0rem",x:88,y:15,c:"#9c27b0",d:2.5},
+  {t:"Dicha",s:"1.4rem",x:40,y:88,c:"#ff4dff",d:.4},{t:"Paz",s:"2.6rem",x:65,y:88,c:"#c2185b",d:1.1},
+  {t:"Gracia",s:"1.0rem",x:12,y:90,c:"#ba68c8",d:2.8},{t:"Ilusión",s:"1.7rem",x:88,y:45,c:"#ff1744",d:.7},
+  {t:"Fe",s:"3.2rem",x:2,y:18,c:"#ad1457",d:2.1},{t:"Gloria",s:"1.3rem",x:30,y:62,c:"#d81b60",d:1.6},
+];
+const wordsEl=document.getElementById('wordsEl');
+words.forEach(w=>{const el=document.createElement('span');el.className='bg-word';el.textContent=w.t;el.style.cssText='font-size:'+w.s+';left:'+w.x+'%;top:'+w.y+'%;color:'+w.c+';animation-delay:'+w.d+'s';wordsEl.appendChild(el);});
+
+// ── Petals ────────────────────────────────────────────────────────
+const emojis=["🌸","🌺","🌹","🌷","💐","🌼","🪷","💮","💖","💝"];
+const petalsEl=document.getElementById('petalsEl');
+for(let i=0;i<14;i++){const el=document.createElement('div');el.className='floating-petal';el.textContent=emojis[i%emojis.length];el.style.cssText='left:'+((i*7+5)%90+5)+'%;animation-delay:'+((i*.9)%8)+'s;animation-duration:'+(7+(i*1.3)%7)+'s;font-size:'+(1.2+(i*.3)%1.2)+'rem';petalsEl.appendChild(el);}
+
+// ── Typewriter ────────────────────────────────────────────────────
+const parts=["Alondra","Lucía","Martín","Jiménez"];
+const textEl=document.getElementById('textEl'),cursorEl=document.getElementById('cursorEl');
+let pi=0,phase='typing',shown='',ti=0;
+function tick(){shown=parts[pi].slice(0,++ti);textEl.textContent=shown;cursorEl.style.display='inline-block';if(ti>=parts[pi].length){phase='pause';setTimeout(()=>{phase='erasing';erase();},1600);}else setTimeout(tick,110);}
+function erase(){if(shown.length===0){cursorEl.style.display='none';pi=(pi+1)%parts.length;ti=0;phase='typing';setTimeout(()=>{cursorEl.style.display='inline-block';tick();},300);return;}shown=shown.slice(0,-1);textEl.textContent=shown;setTimeout(erase,60);}
+tick();
+
+// ── Message ───────────────────────────────────────────────────────
+const overlay=document.getElementById('msgOverlay');
+const msgBody=document.getElementById('msgBody');
+let lineTimer=null;
+
+function animateLines(text){
+  msgBody.innerHTML='';
+  const lines=text.split('\n');
+  let i=0;
+  function next(){if(i<lines.length){const line=lines[i];i++;if(line===''){msgBody.appendChild(document.createElement('br'));}else{const p=document.createElement('p');p.className='msg-line';p.style.animationDelay=(i*.04)+'s';p.textContent=line;msgBody.appendChild(p);}lineTimer=setTimeout(next,line===''?180:480);}}
+  next();
+}
+
+document.getElementById('centerCard').addEventListener('click',()=>{
+  overlay.style.display='flex';
+  animateLines(msgText);
+});
+document.getElementById('msgClose').addEventListener('click',()=>{if(lineTimer)clearTimeout(lineTimer);overlay.style.display='none';});
+overlay.addEventListener('click',e=>{if(e.target===overlay){if(lineTimer)clearTimeout(lineTimer);overlay.style.display='none';}});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const centerCard = document.getElementById('centerCard'); // Elemento que el usuario debe tocar
+  centerCard.addEventListener('click', () => {
+    const iframe = document.createElement('iframe');
+    iframe.src = "https://www.youtube.com/embed/Rhfy2EULgsU?autoplay=1&loop=1&playlist=Rhfy2EULgsU";
+    iframe.width = "0";
+    iframe.height = "0";
+    iframe.frameBorder = "0";
+    iframe.allow = "autoplay";
+    iframe.style.display = "none"; 
+    document.body.appendChild(iframe);
+  }, { once: true }); 
+});
+</script>
+</body>
+</html>
