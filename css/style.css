@@ -1,0 +1,420 @@
+@import url('music.css');
+@import url('interactive.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Pacifico&display=swap');
+
+:root {
+  --primary-color: #ff3366;
+  --secondary-color: #e040fb;
+  --gold-accent: #ffd700;
+  --parchment-bg: #fffaf0;
+  --parchment-border: #e6c894;
+  --text-dark: #3a1c28;
+  --bg-dark: #0a000d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-dark);
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+}
+
+.page {
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px 15px;
+}
+
+/* Background gradient & glow */
+.bg-gradient {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, #2a0835 0%, #170220 50%, #08000c 100%);
+  z-index: 0;
+}
+
+.bg-gradient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 51, 102, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(224, 64, 251, 0.15) 0%, transparent 40%);
+  animation: bgPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes bgPulse {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Floating background romantic words */
+.words-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bg-word {
+  position: absolute;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  opacity: 0;
+  animation: wordFade 6s ease-in-out infinite;
+  text-shadow: 0 0 12px currentColor;
+  white-space: nowrap;
+}
+
+@keyframes wordFade {
+  0% { opacity: 0; transform: translateY(10px) scale(0.9); }
+  20% { opacity: 0.25; transform: translateY(0) scale(1); }
+  80% { opacity: 0.2; transform: translateY(-10px) scale(1); }
+  100% { opacity: 0; transform: translateY(-20px) scale(0.9); }
+}
+
+/* Floating petals and hearts */
+.petals-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.floating-petal {
+  position: absolute;
+  top: -10%;
+  animation: floatDown linear infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 51, 102, 0.6));
+  user-select: none;
+}
+
+@keyframes floatDown {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.9; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+}
+
+/* Main Container */
+.main-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 650px;
+  gap: 24px;
+}
+
+/* Birthday Header */
+.header-box {
+  text-align: center;
+  animation: fadeInDown 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.birthday-badge {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(255, 51, 102, 0.2);
+  border: 1px solid rgba(255, 51, 102, 0.4);
+  border-radius: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ff85a2;
+  box-shadow: 0 0 15px rgba(255, 51, 102, 0.3);
+  margin-bottom: 12px;
+}
+
+.title-main {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.6rem;
+  color: #ffffff;
+  text-shadow:
+    0 0 10px rgba(255, 51, 102, 0.8),
+    0 0 25px rgba(224, 64, 251, 0.6),
+    0 0 40px rgba(255, 215, 0, 0.4);
+  line-height: 1.2;
+}
+
+.subtitle-typewriter {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.6rem;
+  color: #ffd700;
+  margin-top: 6px;
+  min-height: 2.2rem;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--secondary-color);
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Envelope & Love Letter Section */
+.envelope-wrapper {
+  position: relative;
+  width: 320px;
+  height: 220px;
+  margin: 20px auto;
+  cursor: pointer;
+  perspective: 1000px;
+  transition: transform 0.3s ease;
+}
+
+.envelope-wrapper:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #a81c44;
+  border-radius: 12px;
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(255, 51, 102, 0.4);
+  overflow: visible;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.envelope-pocket {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 160px solid #c42352;
+  border-right: 160px solid #b31d48;
+  border-bottom: 120px solid #d92b5e;
+  border-top: 100px solid transparent;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  z-index: 3;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-top: 120px solid #8f1537;
+  transform-origin: top center;
+  transition: transform 0.6s ease-in-out;
+  z-index: 4;
+}
+
+.envelope-wrapper.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+/* Wax Seal */
+.wax-seal {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 52px;
+  background: radial-gradient(circle, #ffd700 0%, #b8860b 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #5c0011;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  z-index: 5;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.envelope-wrapper.open .wax-seal {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.5);
+}
+
+.tap-letter-hint {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.1rem;
+  color: #ffb3c6;
+  text-align: center;
+  animation: pulseHint 2s infinite;
+}
+
+@keyframes pulseHint {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Love Letter Modal Overlay */
+.letter-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(8, 0, 15, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.letter-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.letter-card {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  max-height: 85dvh;
+  background: var(--parchment-bg);
+  background-image:
+    radial-gradient(#e6c894 0.75px, transparent 0.75px),
+    radial-gradient(#e6c894 0.75px, #fffaf0 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  border: 3px solid var(--parchment-border);
+  border-radius: 16px;
+  padding: 35px 28px 25px;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(255, 51, 102, 0.3);
+  color: var(--text-dark);
+  overflow-y: auto;
+  transform: translateY(30px) scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.letter-overlay.active .letter-card {
+  transform: translateY(0) scale(1);
+}
+
+.letter-stamp {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  opacity: 0.8;
+  transform: rotate(12deg);
+}
+
+.letter-header {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #8f1537;
+  text-align: center;
+  margin-bottom: 15px;
+  border-bottom: 2px dashed rgba(143, 21, 55, 0.2);
+  padding-bottom: 10px;
+}
+
+.letter-content {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.35rem;
+  line-height: 1.7;
+  color: #2b0e17;
+  margin-bottom: 20px;
+}
+
+.letter-line {
+  margin-bottom: 8px;
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: slideInLine 0.5s ease forwards;
+}
+
+@keyframes slideInLine {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.letter-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-close-letter {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff3366 0%, #c42352 100%);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 28px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+  transition: all 0.25s ease;
+}
+
+.btn-close-letter:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 51, 102, 0.6);
+}
+
+.btn-close-letter:active {
+  transform: scale(0.98);
+}
+
+/* Animations & Responsive */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .title-main { font-size: 2rem; }
+  .subtitle-typewriter { font-size: 1.3rem; }
+  .envelope-wrapper { width: 280px; height: 190px; }
+  .envelope-pocket {
+    border-left-width: 140px;
+    border-right-width: 140px;
+    border-bottom-width: 105px;
+    border-top-width: 85px;
+  }
+  .envelope-flap {
+    border-left-width: 140px;
+    border-right-width: 140px;
+    border-top-width: 105px;
+  }
+  .letter-card { padding: 25px 18px 20px; }
+  .letter-header { font-size: 2.1rem; }
+  .letter-content { font-size: 1.2rem; }
+}
